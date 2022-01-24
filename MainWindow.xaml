@@ -1,0 +1,57 @@
+﻿<Window x:Class="Timelogger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Timelogger"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Loaded="Grid_Loaded">
+        <ListView x:Name="ListActivities"  Margin="0,0,0,65" KeyUp="ListActivities_KeyUp">
+            <ListView.View>
+                <GridView AllowsColumnReorder="true">
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Title" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding ProcessName}" Header="Process" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Filename}" Width="100" Header="Filename"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding StartString}" Header="Start" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding EndString}" Header="Ende" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Minutes}" Header="Minuten" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding ProjectName}" Header="Projekt" Width="100"/>
+                </GridView>
+
+            </ListView.View>
+        </ListView>
+        <StatusBar Height="65" VerticalAlignment="Bottom">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid VerticalAlignment="Bottom" Height="65">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem>
+                <TextBlock x:Name="TextPID" />
+            </StatusBarItem>
+            <Separator Grid.Column="1" />
+            <StatusBarItem Grid.Column="2" >
+                <TextBlock x:Name="TextTitle" />
+            </StatusBarItem>
+            <Separator Grid.Column="3" />
+            <StatusBarItem Grid.Column="4" >
+                <TextBlock x:Name="TextFilename"/>
+            </StatusBarItem>
+            <Separator Grid.Column="5" />
+            <StatusBarItem Grid.Column="6" >
+                <TextBlock x:Name="TextProject"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
